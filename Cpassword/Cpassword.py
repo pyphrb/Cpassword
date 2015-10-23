@@ -46,7 +46,7 @@ class Cpassword():
         self.writeFile.close()
 
     def readYz(self):
-        with open('lib/payload.txt') as self.cpassDict:
+        with open('libload/payload.txt') as self.cpassDict:
             for self.line in self.cpassDict.readlines():
                 if self.pinyinusername == self.line.split('-')[0]:
                     self.num = self.num + 1
