@@ -24,7 +24,6 @@ class Cpassword():
         self.strnameDict = []
     def run(self):
         self.returnUser = self.readYz()
-        print self.returnUser
         if self.returnUser is not False:
             for self.userxing in self.pinyin.hanzi2pinyin(self.returnUser):
                 self.strname = self.strname + self.userxing
@@ -42,7 +41,6 @@ class Cpassword():
 
     def createDict(self, userstr):
         self.userstr = userstr
-        print self.userstr
         self.strlist = self.userstr
         self.writeFile = open('output/userdict.txt', 'a')
         with open('libload/dict.txt') as self.openDict:
