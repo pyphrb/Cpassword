@@ -111,6 +111,8 @@ abcdefgh
 abcdefghi
 123qwe
 qazwsx
+qazsew
+qazxdr
 qweasd
 asdfjkl;
 `1234567890-=
@@ -119,13 +121,17 @@ asdfjkl;
 ~!@#$%^&*()_+
 %domain%
 
+1234qwer
 123456789
 5201314
 1314520
 makelove
 112233
 qwert
+qwerty
 1q2w3e
 qwer
 54321
 @qiniu
+ijnmko
+asdfzxcv

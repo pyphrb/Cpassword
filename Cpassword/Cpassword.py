@@ -3,6 +3,9 @@
 from pinyin.pinyin import PinYin
 import logging
 import os
+import sys
+reload(sys) 
+sys.setdefaultencoding('utf-8')
 logging.basicConfig(level=logging.DEBUG,\
     format='%(asctime)s %(filename)s[line:%(lineno)d] %(levelname)s %(message)s', \
     datefmt='%Y-%m-%d %H:%M:%S', filename='log/info.log', filemode='w')
@@ -18,27 +21,33 @@ class Cpassword():
         self.struser = ''
         self.listDict = []
         self.threadlist = []
+        self.strnameDict = []
     def run(self):
         self.returnUser = self.readYz()
+        print self.returnUser
         if self.returnUser is not False:
             for self.userxing in self.pinyin.hanzi2pinyin(self.returnUser):
+                self.strname = self.strname + self.userxing
+                self.strnameDict.append(self.strname)
+            self.strname = ''
+            for self.userxing in self.pinyin.hanzi2pinyin(self.returnUser):
                 self.strname = self.strname + self.userxing[0]
-            self.threadlist.append(self.strname)
-            for self.userming in self.pinyin.hanzi2pinyin(self.returnUser)[1:]:
-                self.struser = self.struser + self.userming[0]
-            self.usernamefirst = self.pinyin.hanzi2pinyin(self.returnUser)[0]
-            self.struser = self.usernamefirst + self.struser
-            self.threadlist.append(self.struser)
-            #print self.threadlist
-            self.createDict(self.threadlist)
+                self.strnameDict.append(self.strname)
+
+            for self.userxing in self.pinyin.hanzi2pinyin(self.returnUser):
+                #self.strname = self.strname + self.userxing
+                self.strnameDict.append(self.userxing)
+            self.usernameList = list(set(self.strnameDict))
+            self.createDict(self.usernameList)
 
     def createDict(self, userstr):
         self.userstr = userstr
-        self.strlist = [self.userstr[0], self.userstr[0].upper(), self.userstr[0].capitalize(),self.userstr[1],\
-            self.userstr[1].upper(),self.userstr[1].capitalize()]
+        print self.userstr
+        self.strlist = self.userstr
         self.writeFile = open('output/userdict.txt', 'a')
         with open('libload/dict.txt') as self.openDict:
             for self.line in self.openDict:
+                self.writeFile.write(self.line)
                 self.listDict.append(self.line)
         for self.userDict in self.strlist:
             for self.i in self.listDict:
