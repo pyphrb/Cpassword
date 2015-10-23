@@ -37,7 +37,7 @@ class Cpassword():
         self.strlist = [self.userstr[0], self.userstr[0].upper(), self.userstr[0].capitalize(),self.userstr[1],\
             self.userstr[1].upper(),self.userstr[1].capitalize()]
         self.writeFile = open('output/userdict.txt', 'a')
-        with open('lib/dict.txt') as self.openDict:
+        with open('libload/dict.txt') as self.openDict:
             for self.line in self.openDict:
                 self.listDict.append(self.line)
         for self.userDict in self.strlist:
@@ -52,7 +52,7 @@ class Cpassword():
                     self.num = self.num + 1
                     return self.line.split('-')[1].strip()
         if self.num == 0:
-            print self.pinyinusername + '   not found in lib/payload.txt'
+            print self.pinyinusername + '   not found in libload/payload.txt'
             logging.info(self.pinyinusername + '  not found chinese name please enter lib/payload.txt' + '\n')
             return False
 if __name__ == '__main__':
@@ -62,7 +62,7 @@ if __name__ == '__main__':
     print '[*]------------------------------------pyphrb---------------------------------------------[*]'
     print '[*]---------------------------------qq:959297822------------------------------------------[*]'
     print '[*]if you have no find something aboutnot found chinese name please enter lib/payload.txt [*]'
-    print '[*]else you have no find something please enter name in lib/payload.txt that meaning right[*]'
+    print '[*]else you have no find something please enter name in libload/payload.txt that meaning right[*]'
     print '[*]---------------------------------------------------------------------------------------[*]'
     if os._exists('output/userdict.txt'):
         os.remove('output/userdict.txt')
